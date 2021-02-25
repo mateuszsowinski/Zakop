@@ -52,7 +52,6 @@ public class DiscoveryDAO {
                     discovery.setDateTime(resultSet.getTimestamp(5).toLocalDateTime());
                     discovery.setCategoryId(resultSet.getInt(6));
                     discoveryList.add(discovery);
-                    System.out.println(discoveryList);
                 }
                 return discoveryList;
             }

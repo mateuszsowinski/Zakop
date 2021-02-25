@@ -1,3 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -21,9 +25,9 @@
 
     <form method="post" action="/signup" class="user-form">
         <h2 class="user-form-title">Zarejestruj się</h2>
-        <input name="username" placeholder="Nazwa użytkownika" required>
-        <input name="email" placeholder="Adres e-mail" required>
-        <input name="password" placeholder="Hasło" required>
+        <input name="username" type="text" placeholder="Nazwa użytkownika" required>
+        <input name="email" type="email" placeholder="Adres e-mail" required>
+        <input name="password" type="password" placeholder="Hasło" required>
         <button class="user-form-button">Zarejestruj</button>
     </form>
 
