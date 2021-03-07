@@ -3,10 +3,7 @@ package DAO;
 import config.DbUtil;
 import domain.Discovery;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +11,7 @@ public class DiscoveryDAO {
 
     private static final String FIND_ALL_DISCOVERY = "SELECT * FROM discovery ORDER BY date DESC";
     private static final String FIND_ID_DISCOVERY = "SELECT * FROM discovery WHERE category_id = ? ORDER BY date DESC";
+    private static final String ADD_DISCOVERY = "INSERT INTO discovery (title, url, description, date, category_id, user_id) VALUES (?,?,?,?,?,?)";
 
     public List<Discovery> findAll() {
         List<Discovery> discoveryAll = new ArrayList<>();
@@ -60,5 +58,27 @@ public class DiscoveryDAO {
         }
         return null;
     }
+
+    public Discovery addDiscovery(Discovery discovery) {
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(ADD_DISCOVERY, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, discovery.getTitle());
+            preparedStatement.setString(2, discovery.getUrl());
+            preparedStatement.setString(3, discovery.getDescription());
+            preparedStatement.setObject(4, discovery.getDateTime());
+            preparedStatement.setInt(5, discovery.getCategoryId());
+            preparedStatement.setInt(6, discovery.getUserId());
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if (resultSet.next()) {
+                discovery.setId(1);
+            }
+            return discovery;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

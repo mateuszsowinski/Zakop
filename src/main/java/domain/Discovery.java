@@ -8,7 +8,17 @@ public class Discovery {
     private String url;
     private String description;
     private LocalDateTime dateTime;
-    private int CategoryId;
+    private int categoryId;
+    private int userId;
+
+    public Discovery(String title, String url, String description, LocalDateTime dateTime, int categoryId, int userId) {
+        this.title = title;
+        this.url = url;
+        this.description = description;
+        this.dateTime = dateTime;
+        this.categoryId = categoryId;
+        this.userId = userId;
+    }
 
     public Discovery() {
     }
@@ -18,7 +28,15 @@ public class Discovery {
         this.url = url;
         this.description = description;
         this.dateTime = dateTime;
-        CategoryId = categoryId;
+        this.categoryId = categoryId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        userId = userId;
     }
 
     public int getId() {
@@ -62,10 +80,10 @@ public class Discovery {
     }
 
     public int getCategoryId() {
-        return CategoryId;
+        return categoryId;
     }
 
     public void setCategoryId(int categoryId) {
-        CategoryId = categoryId;
+        categoryId = categoryId;
     }
 }
