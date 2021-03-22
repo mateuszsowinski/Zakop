@@ -40,7 +40,7 @@ public class AddDiscoveryServlet extends HttpServlet {
         discovery.setDescription(text);
         discovery.setCategoryId(categoryId);
         discovery.setDateTime(LocalDateTime.now());
-       // discovery.setUserId(); // do poprawki, trzeba wczytać id zalogowanego użytkownika
+        // discovery.setUserId(); // do poprawki, trzeba wczytać id zalogowanego użytkownika
 
         DiscoveryDAO discoveryDAO = new DiscoveryDAO();
         discoveryDAO.addDiscovery(discovery);

@@ -23,9 +23,9 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setAttribute("discoveries", discoveryDAO.findAll());
-        request.setAttribute("categories",categoryDAO.findAll());
+        request.setAttribute("categories", categoryDAO.findAll());
 
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }
 

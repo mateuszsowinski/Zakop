@@ -54,7 +54,7 @@ public class UserDAO {
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ID_USER)) {
             preparedStatement.setString(1, user);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 User userId = new User();
                 userId.setId(resultSet.getInt(1));
                 return userId;

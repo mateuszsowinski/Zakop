@@ -1,5 +1,5 @@
 
-<%@ include file="/header.jsp" %>
+<%@ include file="/WEB-INF/header.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/add-discovery-form.css">
 
 <form action="#" method="post" class="discovery-form">
@@ -17,4 +17,4 @@
 </form>
 
 
-    <%@ include file="/footer.jsp" %>
+    <%@ include file="/WEB-INF/footer.jsp" %>

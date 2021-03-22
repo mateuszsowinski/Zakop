@@ -54,12 +54,12 @@ public class CategoryDAO {
 //    }
 
 
-    public Category findID (int categoryId) {
+    public Category findID(int categoryId) {
         Category category = new Category();
-        try (Connection connection = DbUtil.getConnection()){
-             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ID_CATEGORY);
-             preparedStatement.setInt(1,categoryId);
-             ResultSet resultSet = preparedStatement.executeQuery();
+        try (Connection connection = DbUtil.getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_ID_CATEGORY);
+            preparedStatement.setInt(1, categoryId);
+            ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 category.setId(resultSet.getInt("id"));
                 category.setName(resultSet.getString("name"));

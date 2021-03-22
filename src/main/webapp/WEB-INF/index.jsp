@@ -1,5 +1,5 @@
 
-    <%@ include file="/header.jsp" %>
+    <%@ include file="/WEB-INF/header.jsp" %>
     <main>
         <c:forEach items="${discoveries}" var="discovery">
             <article class="discovery">
@@ -21,6 +21,6 @@
             </article>
         </c:forEach>
 
-        <%@ include file="/footer.jsp" %>
+        <%@ include file="/WEB-INF/footer.jsp" %>
 
 
