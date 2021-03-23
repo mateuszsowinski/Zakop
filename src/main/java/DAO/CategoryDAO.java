@@ -64,7 +64,6 @@ public class CategoryDAO {
                 category.setId(resultSet.getInt("id"));
                 category.setName(resultSet.getString("name"));
                 category.setDescription(resultSet.getString("description"));
-                System.out.println(category.toString());
                 return category;
 
             }

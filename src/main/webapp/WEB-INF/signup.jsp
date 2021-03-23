@@ -11,7 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="./styles/forms.css">
+    <link rel="stylesheet" href="../styles/form.css">
+    <link href="<c:url value="/styles/main.css"/>" rel="stylesheet">
+    <link href="<c:url value="/styles/form.css"/>" rel="stylesheet">
 </head>
 <body>
 <div class="container">

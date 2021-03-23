@@ -14,25 +14,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-@WebServlet("/adddiscovery")
-@ServletSecurity(httpMethodConstraints = {
-        @HttpMethodConstraint(value = "GET", rolesAllowed = "USER"),
-        @HttpMethodConstraint(value = "POST", rolesAllowed = "USER")
-})
+@WebServlet("/app/add/discovery")
 public class AddDiscoveryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String loggedInUsername = request.getUserPrincipal().getName();
         String title = request.getParameter("title");
         String url = request.getParameter("url");
         String text = request.getParameter("text");
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 
-        UserDAO userDAO = new UserDAO();
-        userDAO.findIdByName(loggedInUsername);
+        HttpSession httpSession = request.getSession();
+        User user = (User) httpSession.getAttribute("userName");
 
         Discovery discovery = new Discovery();
         discovery.setTitle(title);
@@ -40,10 +36,10 @@ public class AddDiscoveryServlet extends HttpServlet {
         discovery.setDescription(text);
         discovery.setCategoryId(categoryId);
         discovery.setDateTime(LocalDateTime.now());
-        // discovery.setUserId(); // do poprawki, trzeba wczytać id zalogowanego użytkownika
-
+        discovery.setUserId(user.getId()); // do poprawki, trzeba wczytać id zalogowanego użytkownika
+//        discovery.setUserId(18);
         DiscoveryDAO discoveryDAO = new DiscoveryDAO();
-        discoveryDAO.addDiscovery(discovery);
+        discoveryDAO.create(discovery);
 
     }
 
@@ -52,6 +48,6 @@ public class AddDiscoveryServlet extends HttpServlet {
         CategoryDAO categoryDAO = new CategoryDAO();
         request.setAttribute("categories", categoryDAO.findAll());
 
-        getServletContext().getRequestDispatcher("/add_discovery.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/add_discovery.jsp").forward(request, response);
     }
 }

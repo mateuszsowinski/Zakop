@@ -33,6 +33,6 @@ public class CategoryServlet extends HttpServlet {
         request.setAttribute("category", categories);
         request.setAttribute("discovery", discovery);
 
-        getServletContext().getRequestDispatcher("/category.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/category.jsp").forward(request, response);
     }
 }

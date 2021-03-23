@@ -1,8 +1,7 @@
-
 <%@ include file="/WEB-INF/header.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/add-discovery-form.css">
 
-<form action="#" method="post" class="discovery-form">
+<form action="/app/add/discovery" method="post" class="discovery-form">
     <h2 class="discovery-form-title"> Dodaj </h2>
     <input name="title" placeholder="Tytuł" required>
     <input name="url" placeholder="Adres URL" required>
@@ -17,4 +16,4 @@
 </form>
 
 
-    <%@ include file="/WEB-INF/footer.jsp" %>
+<%@ include file="/WEB-INF/footer.jsp" %>

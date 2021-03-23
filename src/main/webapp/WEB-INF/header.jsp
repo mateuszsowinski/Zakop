@@ -21,10 +21,10 @@
         </a>
 <%--        <a href="#" class="login-button">Zaloguj</a>--%>
         <c:choose>
-            <c:when test="${empty pageContext.request.userPrincipal}">
+            <c:when test="${sessionScope.userName == null}">
                 <a href="${pageContext.request.contextPath}/login" class="login-button">Zaloguj</a>
             </c:when>
-            <c:when test="${not empty pageContext.request.userPrincipal}">
+            <c:when test="${sessionScope.userName != null}">
                 <a href="${pageContext.request.contextPath}/logout" class="login-button">Wyloguj</a>
             </c:when>
         </c:choose>

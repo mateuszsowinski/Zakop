@@ -59,7 +59,7 @@ public class DiscoveryDAO {
         return null;
     }
 
-    public Discovery addDiscovery(Discovery discovery) {
+    public Discovery create(Discovery discovery) {
         try (Connection connection = DbUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(ADD_DISCOVERY, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, discovery.getTitle());
@@ -74,8 +74,8 @@ public class DiscoveryDAO {
                 discovery.setId(1);
             }
             return discovery;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }

@@ -27,10 +27,11 @@ public class SignupServlet extends HttpServlet {
 
         UserDAO userDAO = new UserDAO();
         userDAO.addUserPermission(user);
+        response.sendRedirect("login");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/signup.jsp").forward(request, response);
     }
 }
