@@ -25,19 +25,28 @@ public class AddDiscoveryServlet extends HttpServlet {
         String title = request.getParameter("title");
         String url = request.getParameter("url");
         String text = request.getParameter("text");
-        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        Integer category_id = Integer.parseInt(request.getParameter("categoryId"));
 
         HttpSession httpSession = request.getSession();
         User user = (User) httpSession.getAttribute("userName");
 
+        System.out.println(title);
+        System.out.println(url);
+        System.out.println(text);
+        System.out.println(LocalDateTime.now());
+        System.out.println(category_id);
+        System.out.println((Integer)user.getId());
+
+
         Discovery discovery = new Discovery();
+
         discovery.setTitle(title);
         discovery.setUrl(url);
         discovery.setDescription(text);
-        discovery.setCategoryId(categoryId);
         discovery.setDateTime(LocalDateTime.now());
-        discovery.setUserId(user.getId()); // do poprawki, trzeba wczytać id zalogowanego użytkownika
-//        discovery.setUserId(18);
+        discovery.setCategoryId(category_id);
+        discovery.setUserId(user.getId());
+
         DiscoveryDAO discoveryDAO = new DiscoveryDAO();
         discoveryDAO.create(discovery);
 

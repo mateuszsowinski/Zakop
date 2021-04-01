@@ -36,7 +36,7 @@ public class Discovery {
     }
 
     public void setUserId(int userId) {
-        userId = userId;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -84,6 +84,6 @@ public class Discovery {
     }
 
     public void setCategoryId(int categoryId) {
-        categoryId = categoryId;
+        this.categoryId = categoryId;
     }
 }
