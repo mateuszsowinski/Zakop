@@ -6,8 +6,8 @@
     <input name="title" placeholder="Tytuł" required>
     <input name="url" placeholder="Adres URL" required>
     <select name="categoryId">
-        <c:forEach items="${categories}" var="categories">
-            <option value="${categories.id}">${categories.name}</option>
+        <c:forEach items="${categories}" var="categoryId">
+            <option value="${categoryId.id}">${categoryId.name}</option>
         </c:forEach>
     </select>
     <textarea name="text" placeholder="Opis" required></textarea>
